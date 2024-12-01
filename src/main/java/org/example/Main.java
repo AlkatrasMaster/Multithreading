@@ -8,32 +8,52 @@ import java.io.File;
 
 public class Main {
 
-    private static int newWidth = 300;
-
-
+    /*
+    Состояние гонки и критические секции
+     */
     public static void main(String[] args) {
-        String srcFolder = "C:/Users/Alkatras/Downloads/src";
-        String dstFolder = "C:/Users/Alkatras/Downloads/dst";
-
-        File srcDir = new File(srcFolder);
-
-        long start = System.currentTimeMillis();
-
-        File[] files = srcDir.listFiles();
-
-        int middle = files.length / 2;
-
-        File[] files1 = new File[middle];
-        System.arraycopy(files, 0, files1, 0, files1.length);
-        ImageResizer resizer1 = new ImageResizer(files1, newWidth, dstFolder, start);
-        new Thread(resizer1).start();
-
-
-        File[] files2 = new File[files.length - middle];
-        System.arraycopy(files, middle, files2, 0, files2.length);
-        ImageResizer resizer2 = new ImageResizer(files2, newWidth, dstFolder, start);
-        new Thread(resizer2).start();
-
-
+        for (int i = 0; i < 4; i++) {
+            new Thread(() -> {
+                for (int j = 0; j < 10000; j++) {
+                    ValueStorage.incrementValue();
+                }
+                System.out.println(ValueStorage.getValue());
+            }).start();
+        }
     }
+
+
+
+    /*
+    1 ЗАДАНИЕ
+     */
+
+//    private static int newWidth = 300;
+//
+//
+//    public static void main(String[] args) {
+//        String srcFolder = "C:/Users/Alkatras/Downloads/src";
+//        String dstFolder = "C:/Users/Alkatras/Downloads/dst";
+//
+//        File srcDir = new File(srcFolder);
+//
+//        long start = System.currentTimeMillis();
+//
+//        File[] files = srcDir.listFiles();
+//
+//        int middle = files.length / 2;
+//
+//        File[] files1 = new File[middle];
+//        System.arraycopy(files, 0, files1, 0, files1.length);
+//        ImageResizer resizer1 = new ImageResizer(files1, newWidth, dstFolder, start);
+//        new Thread(resizer1).start();
+//
+//
+//        File[] files2 = new File[files.length - middle];
+//        System.arraycopy(files, middle, files2, 0, files2.length);
+//        ImageResizer resizer2 = new ImageResizer(files2, newWidth, dstFolder, start);
+//        new Thread(resizer2).start();
+//
+//
+//    }
 }
