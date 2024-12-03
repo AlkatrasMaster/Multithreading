@@ -5,22 +5,40 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Scanner;
 
 public class Main {
+
+
+    /*
+     Ключевое слово Volatile
+ */
+    public static void main(String[] args) {
+
+        Task task = new Task();
+        new Thread(task).start();
+
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+
+        task.stop();
+        System.out.println("Main: " + task.getCounterValue());
+
+    }
 
     /*
     Состояние гонки и критические секции
      */
-    public static void main(String[] args) {
-        for (int i = 0; i < 4; i++) {
-            new Thread(() -> {
-                for (int j = 0; j < 10000; j++) {
-                    ValueStorage.incrementValue();
-                }
-                System.out.println(ValueStorage.getValue());
-            }).start();
-        }
-    }
+//    public static void main(String[] args) {
+//        for (int i = 0; i < 4; i++) {
+//            new Thread(() -> {
+//                for (int j = 0; j < 10000; j++) {
+//                    ValueStorage.incrementValue();
+//                }
+//                System.out.println(ValueStorage.getValue());
+//            }).start();
+//        }
+//    }
 
 
 
