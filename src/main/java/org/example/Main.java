@@ -11,31 +11,46 @@ import java.util.Scanner;
 
 public class Main {
 
+    /*
+    Взаимодействие потоков — методы Wait и Notify
+     */
+
+    public static void main(String[] args) {
+
+        Parking parking = new Parking();
+
+        Thread thread1 = new Thread(new Producer(parking));
+        Thread thread2 = new Thread(new Consumer(parking));
+
+        thread1.start();
+        thread2.start();
+    }
+
 
     /*
     Synchronized-методы
      */
 
-    private static ArrayList<Double> numbers = new ArrayList<>();
-
-    public static void main(String[] args) {
-
-        ArrayList<Thread> threads = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            threads.add(new Thread(Main::someHeavyMethod));
-        }
-
-        threads.forEach(t ->t.start());
-
-    }
-
-    private static synchronized void someHeavyMethod() {
-        for (int i = 0; i < 100000000; i++) {
-            numbers.add(Math.random() / Math.random());
-        }
-        System.out.println(numbers.size());
-        numbers.clear();
-    }
+//    private static ArrayList<Double> numbers = new ArrayList<>();
+//
+//    public static void main(String[] args) {
+//
+//        ArrayList<Thread> threads = new ArrayList<>();
+//        for (int i = 0; i < 10; i++) {
+//            threads.add(new Thread(Main::someHeavyMethod));
+//        }
+//
+//        threads.forEach(t ->t.start());
+//
+//    }
+//
+//    private static synchronized void someHeavyMethod() {
+//        for (int i = 0; i < 100000000; i++) {
+//            numbers.add(Math.random() / Math.random());
+//        }
+//        System.out.println(numbers.size());
+//        numbers.clear();
+//    }
 
     /*
      Ключевое слово Volatile
