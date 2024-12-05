@@ -5,26 +5,53 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
 
     /*
-     Ключевое слово Volatile
- */
+    Synchronized-методы
+     */
+
+    private static ArrayList<Double> numbers = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        Task task = new Task();
-        new Thread(task).start();
+        ArrayList<Thread> threads = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            threads.add(new Thread(Main::someHeavyMethod));
+        }
 
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
-
-        task.stop();
-        System.out.println("Main: " + task.getCounterValue());
+        threads.forEach(t ->t.start());
 
     }
+
+    private static synchronized void someHeavyMethod() {
+        for (int i = 0; i < 100000000; i++) {
+            numbers.add(Math.random() / Math.random());
+        }
+        System.out.println(numbers.size());
+        numbers.clear();
+    }
+
+    /*
+     Ключевое слово Volatile
+ */
+//    public static void main(String[] args) {
+//
+//        Task task = new Task();
+//        new Thread(task).start();
+//
+//        Scanner scanner = new Scanner(System.in);
+//        scanner.nextLine();
+//
+//        task.stop();
+//        System.out.println("Main: " + task.getCounterValue());
+//
+//    }
 
     /*
     Состояние гонки и критические секции
