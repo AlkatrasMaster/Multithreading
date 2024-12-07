@@ -8,23 +8,47 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Main {
+
+    /*
+    Потокобезопасные классы
+     */
+//    private static Vector<Double> numbers = new Vector<>();
+
+//    private static StringBuffer builder = new StringBuffer();
+//
+//    public static void main(String[] args) {
+//        ArrayList<Thread> threads = new ArrayList<>();
+//        for (int i = 0; i < 100; i++)
+//        {
+//            threads.add(new Thread(() -> {
+//                for (int j = 0; j < 100000; j++) {
+//                    builder.append("d");
+////                    numbers.add(Math.random());
+//                }
+//                System.out.println(builder.length());
+//            }));
+//        }
+//
+//        threads.forEach(Thread::start);
+//    }
 
     /*
     Взаимодействие потоков — методы Wait и Notify
      */
 
-    public static void main(String[] args) {
-
-        Parking parking = new Parking();
-
-        Thread thread1 = new Thread(new Producer(parking));
-        Thread thread2 = new Thread(new Consumer(parking));
-
-        thread1.start();
-        thread2.start();
-    }
+//    public static void main(String[] args) {
+//
+//        Parking parking = new Parking();
+//
+//        Thread thread1 = new Thread(new Producer(parking));
+//        Thread thread2 = new Thread(new Consumer(parking));
+//
+//        thread1.start();
+//        thread2.start();
+//    }
 
 
     /*
