@@ -9,13 +9,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 public class Main {
 
-    // Интерфейс Callable
+    /**
+     * TODO: Executors, Executor и ExecutorServic,
+     * TODO: Метод Shutdown
+     */
+
+    public static void main(String[] args) {
+
+        ExecutorService service = Executors.newSingleThreadExecutor();
+        Future<Double> future = service.submit(() -> {
+            double sum = 0;
+            for (int i = 0; i < 10000; i++) {
+                sum += Math.random();
+            }
+            return sum;
+        });
+        try {
+            System.out.println(future.get());
+            service.shutdown();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    /**
+     * TODO: Интерфейс Callable,
+     */
 
     /*
     public static void main(String[] args) {
@@ -48,11 +74,11 @@ public class Main {
 
 
 
-
-
-    /*
-    Потокобезопасные классы
+    /**
+     * TODO: Потокобезопасные классы,
      */
+
+
 //    private static Vector<Double> numbers = new Vector<>();
 
 //    private static StringBuffer builder = new StringBuffer();
@@ -73,9 +99,12 @@ public class Main {
 //        threads.forEach(Thread::start);
 //    }
 
-    /*
-    Взаимодействие потоков — методы Wait и Notify
+
+    /**
+     * TODO: Взаимодействие потоков — методы Wait и Notify,
      */
+
+
 
 //    public static void main(String[] args) {
 //
@@ -89,9 +118,11 @@ public class Main {
 //    }
 
 
-    /*
-    Synchronized-методы
+    /**
+     * TODO: Synchronized-методы,
      */
+
+
 
 //    private static ArrayList<Double> numbers = new ArrayList<>();
 //
