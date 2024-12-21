@@ -14,6 +14,19 @@ import java.util.concurrent.*;
 public class Main {
 
     /**
+     * TODO: ScheduledExecutorService ,
+     */
+
+    public static void main(String[] args) {
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
+        service.schedule(() -> System.out.println("YES"), 1000, TimeUnit.MICROSECONDS);
+        service.scheduleWithFixedDelay(() -> System.out.println(),1000, 2000, TimeUnit.MICROSECONDS)
+//        service.scheduleAtFixedRate(() -> System.out.println("TTT"), 1000, 2000, TimeUnit.MICROSECONDS);
+
+
+    }
+
+    /**
      * TODO: ThreadPoolExecutor,
      */
 //    public static void main(String[] args) {
