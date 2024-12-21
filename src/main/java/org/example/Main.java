@@ -1,30 +1,32 @@
 package org.example;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.Vector;
-import java.util.concurrent.*;
-
 public class Main {
+
+    /**
+     * TODO: Приостановка и прерывание потоков ,
+     */
+
+    public static void main(String[] args) {
+
+        Thread thread = new Timer();
+//        Thread interrupter = new Thread(new Interrupter(thread));
+        thread.start();
+//        interrupter.start();
+
+    }
 
     /**
      * TODO: ScheduledExecutorService ,
      */
 
-    public static void main(String[] args) {
-        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
-        service.schedule(() -> System.out.println("YES"), 1000, TimeUnit.MICROSECONDS);
-        service.scheduleWithFixedDelay(() -> System.out.println(),1000, 2000, TimeUnit.MICROSECONDS)
-//        service.scheduleAtFixedRate(() -> System.out.println("TTT"), 1000, 2000, TimeUnit.MICROSECONDS);
+//    public static void main(String[] args) {
+//        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
+//        service.schedule(() -> System.out.println("YES"), 1000, TimeUnit.MICROSECONDS);
+//        service.scheduleWithFixedDelay(() -> System.out.println(),1000, 2000, TimeUnit.MICROSECONDS)
+////        service.scheduleAtFixedRate(() -> System.out.println("TTT"), 1000, 2000, TimeUnit.MICROSECONDS);
 
 
-    }
+//    }
 
     /**
      * TODO: ThreadPoolExecutor,
