@@ -1,17 +1,33 @@
 package org.example;
 
+import org.example.Node;
+import org.example.NodeValueSumCalculator;
+
+import java.util.concurrent.ForkJoinPool;
+
 public class Main {
+
+    /**
+     * TODO: ForkJoinPool и RecursiveTask ,
+     */
+
+    public static void main(String[] args) {
+        Node root = null;
+
+        new ForkJoinPool().invoke(new NodeValueSumCalculator(root));
+        System.out.println();
+
 
     /**
      * TODO: Приостановка и прерывание потоков ,
      */
 
-    public static void main(String[] args) {
-
-        Thread thread = new Timer();
-//        Thread interrupter = new Thread(new Interrupter(thread));
-        thread.start();
-//        interrupter.start();
+//    public static void main(String[] args) {
+//
+//        Thread thread = new Timer();
+////        Thread interrupter = new Thread(new Interrupter(thread));
+//        thread.start();
+////        interrupter.start();
 
     }
 
